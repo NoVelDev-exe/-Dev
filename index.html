@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE YOU TEA - Ordering App</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <img src="logo.png" alt="BE YOU TEA" class="brand-logo">
+            </div>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ค้นหาเมนูเครื่องดื่ม...">
+            </div>
+            <button class="cart-btn" id="cartTrigger">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>BE YOU TEA</h1>
+            <p>สัมผัสรสชาติชาเข้มข้น มัทฉะแท้เกรดพรีเมียมจาก Morikawa</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Category Filter -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
+            <button class="filter-btn" data-filter="matcha">🍵 MATCHA MENU</button>
+            <button class="filter-btn" data-filter="tea">🥛 MILK / TEA</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menuGrid"></div>
+    </main>
+
+    <!-- Customize Modal -->
+    <div class="modal" id="customizeModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div id="customizeContent"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> ตะกร้าของคุณ</h3>
+            <button class="close-btn" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>ราคารวมทั้งหมด</span>
+                <span id="cartTotal" class="total-price">0 ฿</span>
+            </div>
+            <button class="btn-checkout" id="checkoutBtn" disabled>ชำระเงิน</button>
+        </div>
+    </aside>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content payment-content">
+            <h3><i class="fa-solid fa-qrcode"></i> สแกนชำระเงิน (PromptPay)</h3>
+            <div class="qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BE-YOU-TEA-PAYMENT" alt="PromptPay QR Code">
+            </div>
+            <p class="payment-amount">ยอดชำระ: <strong id="paymentTotal">0 ฿</strong></p>
+            <button class="btn-confirm-payment" id="confirmPaymentBtn">ยืนยันการชำระเงิน</button>
+        </div>
+    </div>
+
+    <!-- Tracking Modal -->
+    <div class="modal" id="trackingModal">
+        <div class="modal-content text-center">
+            <i class="fa-solid fa-circle-check success-icon"></i>
+            <h2>สั่งซื้อสำเร็จ!</h2>
+            <p class="text-muted">ออเดอร์ของคุณกำลังถูกส่งไปยังเคาน์เตอร์</p>
+            <div class="order-status">
+                <div class="status-step active"><i class="fa-solid fa-check"></i> รับออเดอร์</div>
+                <div class="status-step active"><i class="fa-solid fa-blender"></i> กำลังชง</div>
+                <div class="status-step"><i class="fa-solid fa-mug-hot"></i> พร้อมรับสินค้า</div>
+            </div>
+            <button class="btn-dark w-100" onclick="document.getElementById('trackingModal').classList.remove('active')">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+<!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 BeyouTea by Shiryx & Novel</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
